@@ -1,0 +1,19 @@
+{
+  "name": "jamy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "extend": "^3.0.1",
+    "handlebars": "^4.0.11",
+    "jquery": "^3.2.1"
+  }
+}

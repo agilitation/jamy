@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nav Test</title>
+  <link rel="stylesheet" type="text/css" href="reset.css"/>
+  <link rel="stylesheet" type="text/css" href="animate.css"/>
+  <link rel="stylesheet" type="text/css" href="navigation.css"/>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body class="withMask">
+<button id="toggle-mask">Toggle mask</button>
+<div class="app" id="widget" style="transform: translate3d(0,0,0.01em)">
+
+  <!-- Modals -->
+  <aside class="modals">
+    <div class="overlay animation-no-display"></div>
+    <div class="modal alert" id="alert">
+      <h1>I'm an alert</h1>
+      <button class="close" data-hide="#alert">Close</button>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header>
+    <article class="header">
+      <h1>I'm the header of Screen 1</h1>
+    </article>
+    <article class="header">
+      <h1>I'm the header of Screen 2</h1>
+      <nav class="left">
+        <button class="prev" data-show="@prev" data-back="true">Back</button>
+      </nav>
+      <nav class="right">
+        <button class="more" data-show="#screen3">More</button>
+      </nav>
+    </article>
+  </header>
+
+  <!-- Footer -->
+  <footer>
+    <h1>I'm the footer</h1>
+  </footer>
+
+  <!-- Views -->
+  <main class="views">
+    <!-- V1 -->
+    <section class="view" data-name="profile">
+      <div class="content">
+        <h1 class="first">User profile</h1>
+        <p>Name : <span class="name"></span></p>
+        <a href="#!/me" class="href">Me</a>
+        <p><a href="#!/me/friends">My Friends</a></p>
+      </div>
+    </section>
+
+    <!-- V2 -->
+    <section class="view " data-name="friends">
+      <div class="content">
+      <h1>Screen 2</h1>
+      <p class="preloader animation-hide">I'm a preloader</p>
+      <ul>
+        <li><a href="#!/me/friends/user/1">Friend 1</a></li>
+        <li><a href="#!/me/friends/user/2">Friend 2</a></li>
+        <li><a href="#!/me/friends/user/3">Friend 3</a></li>
+      </ul>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="mask top"></div>
+<div class="mask bottom"></div>
+<div class="mask left"></div>
+<div class="mask right"></div>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="jquery-extensions.js"></script>
+<script type="text/javascript" src="async.js"></script>
+<script type="text/javascript" src="nav.js"></script>
+<script type="text/javascript" src="path.js"></script>
+<script>
+  var users = {
+      "1": "Delphine",
+      "2": "Laurent",
+      "3": "Guillaume"
+  };
+
+    var nav = new NavigationController('#widget');
+    var ops = NavigationController.ops;
+    var loadFriendList = function (view, done) {
+        setTimeout(done, 1000);
+    };
+
+    var loadUserProfile = function (view, done) {
+        var name = (view.options.params.id) ? users[view.options.params.id] : 'Romain';
+        $(view.element).find('.name').text(name);
+        done();
+    };
+
+    var routes = [{
+        path: new Path('#!/me'),
+        view: 'profile'
+    }, {
+        path: new Path('#!/me/friends'),
+        view: 'friends'
+    }, {
+        path: new Path('#!/me/friends/user/:id'),
+        view: 'profile'
+    }];
+
+
+    $(window).on('hashchange', function () {
+        var ctx = {params: {}};
+        var match = false;
+        routes.forEach(function (route) {
+            // already found the way
+            if (match) return;
+            if (match = route.path.match(location.hash, ctx)) {
+                nav.showView(route.view, {params: ctx.params});
+            }
+        });
+    });
+
+    if(!location.hash){
+        location.hash = '#!/me';
+    }
+
+    nav.templates['profile'].onEnter(
+        loadUserProfile
+    );
+    nav.templates['friends'].beforeEnter(ops.sync([
+        ops.hide('.preloader'),
+        ops.hide('li')
+    ]));
+
+    var friendsView = new Template('friends');
+
+    nav.templates['friends'].onEnter(ops.sequence([
+            ops.sync([
+                loadFriendList,
+                ops.animate('.preloader', 'fadeIn')
+            ]),
+            ops.hide('.preloader'),
+            ops.each('li', 'fadeInRight', {delay: 200})
+        ])
+    );
+
+
+    $('#toggle-mask').click(function () {
+        $('body').toggleClass('withMask');
+    });
+
+
+  $(window).trigger('hashchange');
+
+</script>
+</body>
+</html>

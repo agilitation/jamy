@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,600');
+
+html {
+    font-family: Roboto, sans-serif;
+    --theme-color: #3aa9b2;
+    --text-color-over-theme: #FFF;
+    --text-color: #333;
+    --background-color: #FFF;
+    font-size: 9.5pt;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    line-height: 2em;
+    font-size: 12pt;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h3 {
+
+}
+
+a {
+    color: #565656;
+    font-weight: bold;
+}
+
+#app {
+    overflow: hidden;
+    box-shadow: 0 .25em 2em rgba(0, 0, 0, 0.16);
+    border-radius: 1rem;
+    line-height: 1.5em;
+}
+
+.btn {
+    background: var(--theme-color);
+    color: var(--text-color-over-theme);
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 100px;
+    padding: .8em 2em;
+    border: none;
+    margin: .5em;
+}
+
+.btn:hover {
+    background: rgba(70, 204, 215, 0.53);
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+    /* TODO @Laura */
+    box-shadow: 0 .2em .5em rgba(70, 204, 215, 0.2);
+}
+
+.btn.small {
+    padding: .25em .5em;
+    border-radius: .16em;
+}
+
+.view {
+    background: white;
+}
+
+.content .container {
+    padding: 48px;
+    text-align: center;
+}
+
+.content .container.full {
+    padding: 0;
+}
+
+.view > header {
+    padding: 1.5rem 5rem .5rem;
+    text-align: center;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.12);
+    position: relative;
+}
+header .points {
+    position: relative;
+    display: inline-block;
+}
+header .points .value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+header button.info {
+    border: none;
+    border-radius: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: .8rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: -2rem;
+}
+
+header .points .unit {
+    display: block;
+    font-size: .8rem;
+}
+
+p {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.progress {
+    border-radius: .2rem;
+    background: #e6e7e8;
+    height: .5rem;
+    overflow: hidden;
+    position: relative;
+    margin: .5rem 0;
+}
+
+.progress .bar {
+    background: var(--theme-color);
+    height: .5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 .25rem .25rem 0;
+    transition: width var(--transition-duration) ease-out;
+}
+
+.progress.mini {
+    height: .25rem;
+}
+
+.progress.mini .bar {
+    height: .25rem;
+}
+
+.progress + .scale {
+     width: 100%;
+    position: relative;
+    padding: 0 2em;
+    margin-top: -.5rem;
+    margin-bottom: 2rem;
+}
+
+.scale span {
+    position: absolute;
+    text-align: center;
+    width: 4rem;
+    margin-left: -2rem;
+    font-size: .7rem;
+}
+
+.scale span::before {
+    position: absolute;
+    content: '';
+    height: .3rem;
+    border-left: 1px solid black;
+    left: 2rem;
+}
+
+.dashed-line {
+    transform: translate3d(0, 0, -1px);
+    background-image: repeating-linear-gradient(90deg, black, black 50%, white 50%, white 100%);
+    height: 1px;
+    background-size: 5%;
+    opacity: 0.15;
+}
+
+.circle path {
+    stroke: var(--theme-color);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 1s ease-in-out both;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+header nav {
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.spacer {
+    flex: 1;
+}
+
+header .arrow {
+    overflow: hidden;
+    width: 1em;
+}
+
+header .arrow svg {
+    fill: var(--theme-color);
+    transition: all .1s ease-out;
+}
+
+header .arrow:hover svg {
+    animation: arrowLeftAnim .3s ease-in-out;
+}
+
+header .arrow:active svg {
+    transform: scale(.7);
+}
+
+@keyframes arrowLeftAnim {
+    0% {
+        transform: translateX(0) scaleY(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-110%) scaleY(.5);
+        opacity: 0;
+    }
+    51% {
+        transform: translateX(110%) scaleY(.2);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scaleY(1);
+        opacity: 1;
+    }
+}
+
+svg.check {
+    height: var(--check-size);
+    width: var(--check-size);
+    margin-right: 1em;
+}
+
+svg.check circle {
+    stroke: rgba(0,0,0,0.3) ;
+    stroke-width: 0.2em;
+    fill: var(--background-color);
+}
+
+svg.check polyline {
+    stroke:rgba(0,0,0,0.5) ;
+    stroke-width: 0.5em;
+    fill: transparent;
+    display: none;
+}
+
+li.checked polyline {
+    display: inherit;
+}
+
+li.active svg.check circle {
+    fill: var(--theme-color);
+    stroke: var(--theme-color);
+}
+
+li.active svg.check polyline {
+    stroke: var(--text-color-over-theme);
+}
+
+.checklist {
+    margin: 2em auto;
+    position: relative;
+    --check-size: 4.5em;
+}
+
+.checklist li {
+    margin: 1.4em auto;
+    display: flex;
+    align-items: center;
+}
+
+.checklist li .detail p {
+    margin: 0;
+    text-align: left;
+}
+
+.checklist .border {
+    --border-width: .1em;
+    content: '';
+    height: calc(100% - (var(--check-size) / 2));
+    position: absolute;
+    left: calc((var(--check-size) / 2) - (var(--border-width) / 2));
+    top: 1em;
+    border-left: rgba(0,0,0,0.3) var(--border-width) solid;
+    z-index: -1;
+    transition: all ease-out;
+    animation-fill-mode: forwards;
+}
+
+.animated.expand {
+    animation-name: expandDown;
+    transform-origin: top;
+}
+
+@keyframes expandDown {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+.legend {
+    text-align: center;
+}
+
+.reward {
+    color: var(--theme-color);
+}
+
+.centered {
+    display: inline-block;
+}
+
+.badge {
+    display: flex;
+    width: 100%;
+    text-align: left;
+}
+
+.badge .icon {
+    position: relative;
+    height: 4rem;
+    width: 4rem;
+}
+
+.badge .icon svg  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.badge .icon img {
+    width: 100%;
+    height: 100%;
+}

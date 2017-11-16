@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jamy v2</title>
+  <link rel="stylesheet" type="text/css" href="reset.css"/>
+  <link rel="stylesheet" type="text/css" href="v2.css"/>
+</head>
+<body>
+<div class="debug">
+  <button class="overflow">Overflow</button>
+  <button class="showNotif">Notification</button>
+  <button class="showBase">Base</button>
+  <button class="showDetail">Detail</button>
+</div>
+<div class="widget" data-state="notification">
+  <div class="background"></div>
+  <section class="notification">
+    <h1>Salut Laura !</h1>
+    <div class="missions">
+
+    </div>
+    <button class="showBase">Mon compte</button>
+  </section>
+  <header>
+    <p>1240points</p>
+  </header>
+  <section class="base withHeader">
+    <h2>Mes badges</h2>
+    <ul>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+    </ul>
+    <h2>One-shot</h2>
+    <ul>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+    </ul>
+    <ul>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+    </ul>
+    <h2>One-shot</h2>
+    <ul>
+      <li><h3>Curieux</h3></li>
+      <li><h3>Curieux</h3></li>
+    </ul>
+  </section>
+  <section class="detail withHeader">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda atque cum deleniti dignissimos
+      ducimus, eius eos et maiores numquam possimus quae quibusdam saepe, sunt tempore totam ut vel, voluptas.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto delectus doloribus earum, est facere facilis
+      fugit iste minus natus necessitatibus neque nostrum officia optio perferendis praesentium quibusdam tempore vero
+      voluptatem.</p>
+  </section>
+</div>
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script>
+    var $widget = $('.widget');
+
+    $('button.overflow').click(function () {
+        $widget.toggleClass('withOverflow')
+    });
+
+    $('button.showBase').click(function () {
+        $widget.attr('data-state', 'base');
+    });
+    $('button.showNotif').click(function () {
+        $widget.attr('data-state', 'notification');
+    });
+    $('button.showDetail').click(function () {
+        $widget.attr('data-state', 'detail');
+        $('section.detail').addClass('enter');
+        $('section.base').addClass('exit');
+    });
+</script>
+</body>
+</html>

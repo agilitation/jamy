@@ -1,0 +1,95 @@
+.kinematic-no-display {
+    display: none;
+}
+
+.kinematic-hide-transparent {
+    opacity: 0;
+}
+
+.kinematic-collapse-height {
+    height: 0;
+}
+
+.kinematic-collapse-width {
+    width: 0;
+}
+
+.kinematic-farthest {
+    z-index: 100;
+}
+
+.kinematic-far {
+    z-index: 150;
+}
+
+.kinematic-near {
+    z-index: 200;
+}
+
+.kinematic-nearest {
+    z-index: 250;
+}
+
+
+.kinematic-shadow::after {
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease-in-out;
+}
+
+.kinematic-shadow-big-diffuse::after {
+    box-shadow: 0 0 100px rgba(0, 0, 0, 1);
+    opacity: 1;
+}
+
+.kinematic-shadow-medium-diffuse::after {
+    box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+    opacity: 1;
+}
+
+.kinematic-shadow-transparent::after {
+    opacity: 0;
+}
+
+.kinematic-translate-right {
+    transform: translateX(100%)
+}
+
+.kinematic-translate-left {
+    transform: translateX(-100%);
+}
+
+.kinematic-translate-bottom {
+    transform: translateY(100%);
+}
+
+.kinematic-translate-top {
+    transform: translateY(-100%);
+}
+
+.kinematic-opacity-transparent{
+    opacity: 0;
+}
+.kinematic-opacity-opaque{
+    opacity: 1;
+}
+.kinematic-opacity-light{
+    opacity:.2;
+}
+.kinematic-opacity-heavy {
+    opacity: .8;
+}
+
+.kinematic-with-transition {
+    transition: var(--transition-duration) all ease-in-out;
+}
+.kinematic-without-transition {
+    transition-duration: 0s !important;
+}

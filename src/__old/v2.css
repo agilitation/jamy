@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600|Roboto');
+
+html {
+    background: #CCC;
+}
+
+* {
+    box-sizing: content-box;
+}
+
+.debug {
+    margin: 2em;
+}
+
+.debug button {
+    font-size: 2em;
+}
+
+.widget {
+    font-family: 'Roboto', sans-serif;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 48px;
+    left: 24px;
+    box-shadow: 0 0 48px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    overflow: hidden;
+    transition: padding 1s 0s ease-out, width 1s 0s ease-out, height 1s 0s ease-out;
+}
+
+.widget .background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+.widget.withOverflow {
+    overflow: visible;
+}
+
+.widget h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.widget section {
+    padding: 48px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: 1px solid red;
+    width: 100%;
+    height: 100%;
+}
+
+
+.widget > header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0);
+    height: 100px;
+    background: #FFF;
+    text-align: center;
+    padding: 48px;
+    width: 100%;
+    transform: translateY(-100px);
+    transition: transform .3s .7s ease-out, box-shadow .3s .7s ease-out;
+    z-index: 100;
+}
+
+.widget > section  {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 1s ease-out
+}
+
+.widget > section.withHeader {
+    top: 100px;
+    height: calc(100% - 100px)
+}
+
+.widget {
+    width: 300px;
+    height: 450px;
+}
+
+.widget[data-state="notification"] {
+    width: 200px;
+    height: 150px;
+}
+
+.widget[data-state="notification"] .base {
+    transform: translateX(100%)
+}
+.widget[data-state="notification"] .notification {
+    transform: translateX(0)
+}
+.widget[data-state="base"] .base {
+    transform: translateX(0)
+}
+
+.widget[data-state="base"] .notification {
+    display: none;
+}
+
+.widget[data-state="base"] > header {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+
+section.enter {
+    transform: translate(0)
+}
+
+section.exit {
+    transform: translate(-100%)
+}

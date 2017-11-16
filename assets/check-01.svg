@@ -1,0 +1,22 @@
+<svg id="64d7e0c3-0a14-4543-a52f-6c053590b613" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <style>
+      .\36 bf51f4e-5245-4480-88a7-7d5cfebbe9d3 {
+        fill: #ccc;
+      }
+
+      .\31 365f13d-6e56-47f5-8910-46df5143e1c7, .\36 bf51f4e-5245-4480-88a7-7d5cfebbe9d3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .\31 365f13d-6e56-47f5-8910-46df5143e1c7 {
+        fill: none;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <title>check</title>
+  <circle class="6bf51f4e-5245-4480-88a7-7d5cfebbe9d3" cx="60" cy="60" r="50"/>
+  <polyline class="1365f13d-6e56-47f5-8910-46df5143e1c7" points="86.875 44.063 53.75 76.563 37.157 60.843"/>
+</svg>

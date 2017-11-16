@@ -1,0 +1,205 @@
+:root {
+    background: #CCC;
+    --left-offset: 400px;
+    --top-offset: 200px;
+    --widget-width: 400px;
+    --widget-height: 600px;
+    --header-height: 80px;
+    --footer-height: 40px;
+    --transition-duration: .6s;
+    --view-padding: 48px;
+}
+
+#app {
+    position: absolute;
+    top: var(--top-offset);
+    left: var(--left-offset);
+    height: var(--widget-height);
+    width: var(--widget-width);
+    overflow: hidden;
+}
+
+#app .animated {
+    animation-duration: .6s;
+}
+
+body.withMask #app {
+    overflow: visible;
+}
+
+.mask {
+    display: none;
+    background: rgba(200, 180, 180, .8);
+    position: absolute;
+}
+body.withMask .mask {
+    display: block;
+}
+
+.mask.top {
+    top: 0;
+    left: 0;
+    height: var(--top-offset);
+    width: 100%;
+}
+
+.mask.left {
+    top: 200px;
+    left: 0;
+    width: var(--left-offset);
+    height: calc(100% - var(--top-offset));
+}
+
+.mask.right {
+    top: 200px;
+    right: 0;
+    width: calc(100% - var(--widget-width) - var(--left-offset));
+    height: calc(100% - var(--top-offset));
+}
+
+.mask.bottom {
+    top: calc(var(--top-offset) + var(--widget-height));
+    height: calc(100% - (var(--top-offset) + var(--widget-height)));
+    left: var(--left-offset);
+    width: var(--widget-width);
+}
+
+.app.small {
+    --widget-height: 200px;
+    --widget-width: 300px;
+}
+
+.app > header,
+.app > header > article.header,
+.app > header > article.header nav,
+.app > footer,
+.app > .views,
+.app > .views > .view,
+.app > aside.modals,
+.app > aside.modals > .modal,
+.app > aside.modals > .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/*********************************
+            HEADER
+ **********************************/
+.app > header {
+    z-index: 1000;
+    height: var(--header-height);
+
+    /* hidden by default */
+    transform: translateY(-100%);
+}
+
+.app.withHeader > header {
+    transform: translateY(0);
+}
+
+.app > header > .header {
+    align-items: center;
+    /* hidden and next by default */
+    transform: translateX(100%);
+    text-align: center;
+}
+.app > header > .header h1 {
+}
+
+.app > header > .header.active {
+    transform: translateX(0);
+}
+
+.app > header > .header.prev {
+    transform: translateX(-100%);
+}
+
+.app > header > .header nav.left{
+    width: auto;
+}
+
+.app > header > .header nav.right {
+    left: auto;
+    width: auto;
+    right: 0;
+}
+
+/*********************************
+            FOOTER
+ **********************************/
+.app > footer {
+    z-index: 900;
+    top: auto;
+    bottom: 0;
+    height: var(--footer-height);
+
+    /* hidden */
+    transform: translateY(100%);
+}
+
+.app.withFooter > footer {
+    transform: translateY(0);
+}
+/*********************************
+            VIEWS
+ **********************************/
+
+.view {
+    transform: translate3d(0, 0, 0);
+    overflow: visible;
+    background: white;
+}
+
+.view > .content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - var(--header-height))
+}
+
+.app > .views > .view.translateLeft {
+    transform: translateX(-100%);
+}
+
+.app > .views > .view.translateRight {
+    transform: translateX(100%);
+}
+
+.app > .views > .view.active {
+    transform: translateX(0);
+}
+
+.app.withHeader > .views > .view {
+    top: var(--header-height);
+    height: calc(100% - var(--header-height));
+}
+.app.withFooter > .views > .view {
+    top: 0;
+    height: calc(100% - var(--footer-height));
+}
+.app.withHeader.withFooter > .views > .view {
+    top: var(--header-height);
+    height: calc(100% - var(--header-height) - var(--footer-height));
+}
+
+/*********************************
+            MODALS
+ **********************************/
+aside.modals > .modal {
+    z-index: 1100;
+    /* hidden */
+    transform: translateY(150%);
+    background: #a4532c;
+}
+
+aside.modals > .modal.active {
+    transform: translateY(0);
+}
+
+aside.modals > .overlay {
+    background: rgba(0,0,0,.6);
+    z-index: 1010;
+    opacity: 0;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle</title>
+  <style>
+    path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+
+    svg.animate path {
+      animation: dash 1s ease-in-out forwards;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    body {
+      background: #EEE;
+    }
+
+  </style>
+</head>
+<body>
+<svg version="1.1" height="204px" width="204px" viewBox="0 0 204 204">
+  <path
+      stroke="#000000" stroke-width="1" stroke-miterlimit="10" fill="rgba(0,0,0,0)"
+      d="M 2, 2
+        m -100, 0
+        a 100,100 0 1,0 200,0
+        a 100,100 0 1,0 -200,0">
+  </path>
+</svg>
+<button onclick="document.querySelector('svg').classList.toggle('animate')">Animate</button>
+<script>
+/*
+  var path = document.querySelector('path');
+    var length = path.getTotalLength();
+    path.style.strokeDasharray = length / 2;
+  path.style.strokeDashoffset= length / 2;*/
+</script>
+</body>
+</html>

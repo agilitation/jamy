@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jamy test widget</title>
+    <link rel="stylesheet" type="text/css" href="reset.css"/>
+    <link rel="stylesheet" type="text/css" href="widget.css"/>
+    <meta charset="utf-8">
+</head>
+<body>
+<form id="iframe-form">
+    <input id="iframe-url" type="text" name="website" value="http://test.instencil.com">
+    <button id="reload-iframe">reload</button>
+</form>
+<div id="widget">
+    <div class="modal">
+        <header>
+            <div class="counter">
+                <div class="points">1 245</div>
+                <div class="unit">points</div>
+            </div>
+            <div class="progress" data-value="2" data-max="4">
+                <div class="track" style="width:50%"></div>
+            </div>
+        </header>
+        <div class="panels-wrapper">
+            <div class="panels">
+                <!--
+                <div id="missions">
+                    Missions
+                </div>
+            -->
+                <div id="badges">
+                    <!-- BADGE Curieux -->
+                    <div class="badge">
+                        <div class="icon">
+                            <img src="zoom-icon.png">
+                            <span class="level">3</span>
+                        </div>
+                        <div class="detail">
+                            <div class="id">
+                                <div class="title">Curieux</div>
+                                <div class="reward">+10</div>
+                            </div>
+                            <div class="status">
+                                <div class="progress" data-value="373" data-max="500">
+                                    <div class="track" style="width:74.6%"></div>
+                                </div>
+                                <div class="conditions">
+                                    <span class="objective">Voir 500 fiches produit</span>
+                                    <span class="remaining">Reste 127</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BADGE Imprimeur -->
+                    <div class="badge">
+                        <div class="icon">
+                            <img src="print-icon.png">
+                            <span class="level">1</span>
+                        </div>
+                        <div class="detail">
+                            <div class="id">
+                                <div class="title">Gutemberg</div>
+                                <div class="reward">+2</div>
+                            </div>
+                            <div class="status">
+                                <div class="progress" data-value="2" data-max="5">
+                                    <div class="track" style="width:40%"></div>
+                                </div>
+                                <div class="conditions">
+                                    <span class="objective">Imprimer 5 pages du site</span>
+                                    <span class="remaining">Reste 3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BADGE Imprimeur -->
+                    <div class="badge">
+                        <div class="icon">
+                            <img src="phone.png">
+                            <span class="level">1</span>
+                        </div>
+                        <div class="detail">
+                            <div class="id">
+                                <div class="title">Nomade</div>
+                                <div class="reward">+10</div>
+                            </div>
+                            <div class="status">
+                                <div class="progress" data-value="2" data-max="4">
+                                    <div class="track" style="width:50%"></div>
+                                </div>
+                                <div class="conditions">
+                                    <span class="objective">Consulter le site sur téléphone portable ou tablette une fois par semaine</span>
+                                    <span class="remaining">Reste 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="points">
+                    <div class="counter">
+                        <div class="points">1 245</div>
+                        <div class="unit">points</div>
+                        <hr>
+                        <div class="encouragement">
+                            Échangez vos points contre des récompenses
+                        </div>
+                    </div>
+                    <div class="rewards">
+                        <div class="reward available">
+                            <div class="icon">
+                                <img src="dollar.png">
+                            </div>
+                            <div class="details">
+                                <div class="title">
+                                    Bon d'achat
+                                </div>
+                                <div class="cost">
+                                    <span class="value">500</span>
+                                    <span class="unit">points</span>
+                                </div>
+                                <button class="exchange">
+                                    échanger
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="reward">
+                            <div class="icon">
+                                <img src="package.png">
+                            </div>
+                            <div class="details">
+                                <div class="title">
+                                    Livraison gratuite
+                                </div>
+                                <div class="cost">
+                                    <span class="value">500</span>
+                                    <span class="unit">points</span>
+                                </div>
+                                <button class="exchange" disabled="disabled">
+                                    échanger
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">+</div>
+</div>
+<!--
+<iframe id="iframe" src="http://test.instencil.com" width="100%" height="100%"></iframe>
+-->
+<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    $("#iframe-form").submit(function () {
+        $("#iframe").attr('src', $("#iframe-url").val());
+        return false;
+    });
+</script>
+</body>
+</html>
