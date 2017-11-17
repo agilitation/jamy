@@ -93,3 +93,7 @@
 .kinematic-without-transition {
     transition-duration: 0s !important;
 }
+
+.kinematic-collapse-width {
+    transform: scaleX(0);
+}

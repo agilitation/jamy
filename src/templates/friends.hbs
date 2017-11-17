@@ -14,14 +14,70 @@
 </header>
 <div class="content">
   <div class="container">
-    <h1>Hello Romain</h1>
-  </div>
-  <div class="dashed-line"></div>
-  <div class="container">
-    <ul>
-      {{#each friends}}
-        <li>{{name}}</li>
-      {{/each}}
-    </ul>
+    <div class="progress">
+      <div class="bar" style="width: 28%"></div>
+    </div>
+    <div class="legend">
+      1/5 semaines de connexion
+    </div>
+    <p>Consulter le site chaque semaine vous rapporte des points, et même un bonus !</p>
+    <!-- CHECKLIST -->
+    <div class="centered">
+      <div class="checklist">
+        <div class="border" style="animation-duration: 2s"></div>
+        <ul>
+          <li class="checked">
+            <svg viewBox="0 0 120 120" class="check">
+              <circle cx="60" cy="60" r="50"></circle>
+              <polyline points="86.875 44.063 53.75 76.563 37.157 60.843"></polyline>
+            </svg>
+            <div class="detail">
+              <p>Semaine 1</p>
+              <p><span class="reward">+10</span></p>
+            </div>
+          </li>
+          <li class="checked active">
+            <svg viewBox="0 0 120 120" class="check">
+              <circle cx="60" cy="60" r="50"></circle>
+              <polyline points="86.875 44.063 53.75 76.563 37.157 60.843"></polyline>
+            </svg>
+            <div class="detail">
+              <p>Semaine 2</p>
+              <p><span class="reward">+15</span></p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 120 120" class="check">
+              <circle cx="60" cy="60" r="50"></circle>
+              <polyline points="86.875 44.063 53.75 76.563 37.157 60.843"></polyline>
+            </svg>
+            <div class="detail">
+              <p>Semaine 3</p>
+              <p><span class="reward">+15</span></p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 120 120" class="check">
+              <circle cx="60" cy="60" r="50"></circle>
+              <polyline points="86.875 44.063 53.75 76.563 37.157 60.843"></polyline>
+            </svg>
+            <div class="detail">
+              <p>Semaine 4</p>
+              <p><span class="reward">+15</span></p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 120 120" class="check">
+              <circle cx="60" cy="60" r="50"></circle>
+              <polyline points="86.875 44.063 53.75 76.563 37.157 60.843"></polyline>
+            </svg>
+            <div class="detail">
+              <p>Semaine 5</p>
+              <p><span class="reward">livraison gratuite !</span></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

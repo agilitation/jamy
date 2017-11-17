@@ -58,7 +58,7 @@ function hide(options, complete) {
     var mask = createMask();
 
     æ.series([
-        modalView.fhook('beforeEnter'),
+        modalView.fhook('beforeExit'),
         function (cb) {
             app.el.appendChild(mask);
             h.addClass(mask, c.depth.NEAR, c.transition.WITH, c.opacity.HEAVY);
@@ -71,7 +71,7 @@ function hide(options, complete) {
                     h.cls(mask, [c.opacity.TRANSPARENT, h.minus(c.opacity.HEAVY)], parallelCb)
                 },
                 function (parallelCb) {
-                    modalView.hook('onEnter');
+                    modalView.hook('onExit');
                     h.cls(el, [c.translate.BOTTOM], parallelCb);
                 }
             ], cb)
@@ -81,6 +81,6 @@ function hide(options, complete) {
             app.el.removeChild(mask);
             cb();
         },
-        modalView.fhook('afterEnter')
+        modalView.fhook('afterExit')
     ], complete);
 }

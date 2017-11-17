@@ -1,7 +1,7 @@
 :root {
     background: #CCC;
-    --left-offset: 400px;
-    --top-offset: 200px;
+    --left-offset: 100px;
+    --bottom-offset: 100px;
     --widget-width: 400px;
     --widget-height: 600px;
     --header-height: 80px;
@@ -10,9 +10,16 @@
     --view-padding: 48px;
 }
 
+body.mobile {
+    --left-offset: 0;
+    --bottom-offset: 0;
+    --widget-height: 100%;
+    --widget-width: 100%;
+}
+
 #app {
     position: absolute;
-    top: var(--top-offset);
+    bottom: var(--bottom-offset);
     left: var(--left-offset);
     height: var(--widget-height);
     width: var(--widget-width);
@@ -25,43 +32,6 @@
 
 body.withMask #app {
     overflow: visible;
-}
-
-.mask {
-    display: none;
-    background: rgba(200, 180, 180, .8);
-    position: absolute;
-}
-body.withMask .mask {
-    display: block;
-}
-
-.mask.top {
-    top: 0;
-    left: 0;
-    height: var(--top-offset);
-    width: 100%;
-}
-
-.mask.left {
-    top: 200px;
-    left: 0;
-    width: var(--left-offset);
-    height: calc(100% - var(--top-offset));
-}
-
-.mask.right {
-    top: 200px;
-    right: 0;
-    width: calc(100% - var(--widget-width) - var(--left-offset));
-    height: calc(100% - var(--top-offset));
-}
-
-.mask.bottom {
-    top: calc(var(--top-offset) + var(--widget-height));
-    height: calc(100% - (var(--top-offset) + var(--widget-height)));
-    left: var(--left-offset);
-    width: var(--widget-width);
 }
 
 .app.small {

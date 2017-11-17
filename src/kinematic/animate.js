@@ -9,14 +9,15 @@ var classnames = require('./classnames');
  * @param {NodeList|HTMLElement|HTMLElement[]|string} selector
  * @param {string} cls
  * @param {object} options
- * @param {number} options.delay time to wait before firing the animation, in ms
- * @param {string} options.addClass add class(es) to the element after the animation finishes
- * @param {string} options.removeClass remove class(es) to the element after the animation finishes
+ * @param {boolean=} options.remove remove class instead of applying it
+ * @param {number=} options.delay time to wait before firing the animation, in ms
+ * @param {string=} options.addClass add class(es) to the element after the animation finishes
+ * @param {string=} options.removeClass remove class(es) to the element after the animation finishes
  * @param {function|undefined} options.after exec a callback for each animated element
  * @return {function}
  */
 module.exports = function animateCss(selector, cls, options) {
-    options = options || {delay: 1};
+    options = options || {delay: 1, remove: false};
     return function animateInView(view, done) {
         // targets may be a single dom element or a node list
         var targets;
@@ -28,7 +29,7 @@ module.exports = function animateCss(selector, cls, options) {
             targets = selector;
         }
 
-        if(targets.length === 0){
+        if (targets.length === 0) {
             return done();
         }
 
@@ -40,10 +41,13 @@ module.exports = function animateCss(selector, cls, options) {
                 h.removeClass(el, h.everyClassname(classnames.hide));
                 h.addClass(el, 'animated');
                 // void el.offsetWidth; // force the browser to do a reflow
-                h.cls(el, [cls], function () {
+                h.cls(el, [options.remove ? h.minus(cls) : cls], function () {
                     h.addClass(el, options.addClass);
                     h.removeClass(el, options.removeClass);
-                    h.removeClass(el, ['animated', cls]);
+                    h.removeClass(el, 'animated');
+                    if (!options.remove) {
+                        h.removeClass(el, cls);
+                    }
                     h.isFunction(options.after) ? options.after(el, cb) : cb();
                 });
             }, options.delay * i);

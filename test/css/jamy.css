@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600,900');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,600');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,200i,600,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:200i,400,400i,600');
 
 html {
     font-family: Roboto, sans-serif;
@@ -40,12 +40,17 @@ a {
     box-shadow: 0 .25em 2em rgba(0, 0, 0, 0.16);
     border-radius: 1rem;
     line-height: 1.5em;
+    transition: all var(--transition-duration) ease-out;
+}
+
+body.mobile #app {
+    border-radius: 0;
 }
 
 .btn {
     background: var(--theme-color);
     color: var(--text-color-over-theme);
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 1rem;
     border-radius: 100px;
     padding: .8em 2em;
@@ -67,6 +72,7 @@ a {
 .btn.small {
     padding: .25em .5em;
     border-radius: .16em;
+    font-weight: lighter;
 }
 
 .view {
@@ -337,25 +343,145 @@ li.active svg.check polyline {
     display: inline-block;
 }
 
-.badge {
+.badges .badge {
     display: flex;
     width: 100%;
     text-align: left;
+    padding: 1em var(--view-padding);
+    align-items: center;
 }
 
-.badge .icon {
+.badges .badge:hover {
+    background: #EEE;
+}
+
+.badges .badge h3 {
+    line-height: 1em;
+}
+
+.badges .badge .icon {
     position: relative;
     height: 4rem;
     width: 4rem;
+    margin-right: 1rem;
 }
 
-.badge .icon svg  {
+.badges .badge .icon svg  {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.badge .icon img {
+.badges .badge .icon img {
     width: 100%;
     height: 100%;
+}
+
+.badges .badge .action a {
+    display: inline-block;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.badges .badge .action svg {
+    height: 3rem;
+    stroke: #CCC;
+    stroke-width: 2px;
+    fill: transparent;
+    vertical-align: middle;
+    transition: all .1s ease-out;
+}
+
+.badges .badge:hover .action svg {
+    stroke: var(--theme-color);
+    transform: translateX(100%);
+    opacity: .5;
+}
+
+.badges .badge .detail {
+    flex: 1;
+    text-align: left;
+}
+
+.badges .badge .legend {
+    text-align: left;
+}
+
+.badges h2 {
+    text-align: left;
+    margin-top: 2rem;
+    line-height: 2rem;
+    padding: 0 var(--view-padding);
+    font-size: 1rem;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.badge .points {
+    color: var(--theme-color)
+}
+
+.slider {
+    display: flex;
+    margin: -2rem auto;
+    align-items: center;
+    --icon-size: 6rem;
+    --level-size: 1.6rem;
+}
+
+.slider .slides {
+    flex: 1;
+    position: relative;
+    height: 16rem;
+}
+
+.slider .arrow {
+    height: 5rem;
+    width: 2.2rem;
+    margin: 1rem;
+}
+
+.slider .arrow polyline {
+    stroke-width:2px;
+    stroke: var(--theme-color);
+    fill: transparent;
+}
+
+.slider .slide {
+    position:absolute;
+    top: 0;
+    width: 100%;
+}
+
+.slider .badge .icon {
+    position: relative;
+    height: var(--icon-size);
+    width: var(--icon-size);
+    margin: 1rem auto;
+}
+
+.slider .badge .icon svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.slider .badge .icon img {
+    height:100%;
+    width: 100%;
+}
+.slider .badge .level {
+    position: absolute;
+    bottom: calc(var(--icon-size) / 20);
+    right: calc(var(--icon-size) / 20);
+    height: var(--level-size);
+    width: var(--level-size);
+    border-radius: var(--level-size);
+    background: #333;
+    color: white;
+    text-align: center;
+    line-height: var(--level-size);
+    font-size: calc(var(--level-size) / 2)
 }

@@ -28,22 +28,14 @@ app.templates.friends.on('onEnter', function (view, done) {
     function onData() {
         æ.series([
             renderView,
-            k.hide('h1, li'),
-            k.animateCss('h1', 'fadeIn'),
-            k.animateCss('li', 'fadeInRight', {delay: 200})
+            k.hide('li'),
+            k.hide('.checklist .border'),
+            k.parallel([
+                k.animateCss('.checklist .border', 'expand'),
+                k.animateCss('li', 'fadeInRight', {delay: 200})
+            ])
         ], done, view);
     }
-});
-app.templates.profile.on('onEnter', function (view, done) {
-    æ.series([
-        renderView,
-        k.hide('li'),
-        k.hide('.checklist .border'),
-        k.parallel([
-            k.animateCss('.checklist .border', 'expand'),
-            k.animateCss('li', 'fadeInRight', {delay: 200})
-        ])
-    ], done, view);
 });
 
 app.templates.profile.on('beforeEnter', function (view, done) {
@@ -51,6 +43,10 @@ app.templates.profile.on('beforeEnter', function (view, done) {
         id: 1,
         name: 'Romain'
     };
+    view.render();
+    var header = view.el.querySelector('header');
+    var content = view.el.querySelector('header + .content');
+    content.style.height = 'calc(100% - ' + getComputedStyle(header).height + ')';
     done();
 });
 
@@ -63,6 +59,14 @@ app.templates.friends.on('onExit', function (view, done) {
 
 app.templates.modal.on('beforeEnter', function (view, done) {
     view.render();
+    var content = view.el.querySelector('.content');
+    content.style.height = 'auto';
+    app.el.style.height = getComputedStyle(content).height;
+    done();
+});
+
+app.templates.modal.on('onExit', function(view, done){
+    app.el.removeAttribute('style');
     done();
 });
 

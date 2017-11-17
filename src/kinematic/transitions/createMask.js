@@ -9,6 +9,6 @@ module.exports = function createMask(){
     s.height = '100%';
     s.top = '0';
     s.left = '0';
-    s.background = 'rgb(0,0,0)';
+    s.background = 'rgba(0,0,0, 0.5)';
     return el;
 };

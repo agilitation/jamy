@@ -1,6 +1,49 @@
 <div class="content modal">
-  <div class="container">
-    <h1>Watch out! I'm a modal</h1>
-    <button onclick="app.hideModal()">Close</button>
+  <div class="container greeting">
+      <h1>Salut Laura !</h1>
+      <p>Tu as des missions en cours</p>
+  </div>
+  <div class="container full">
+    <div class="slider">
+      <a href="#prev" class="arrow prev">
+        <svg viewBox="0 0 16 36">
+          <polyline points="10.379 31.115 5.32 17.979 10.5 4.844"></polyline>
+        </svg>
+      </a>
+      <div class="slides">
+        <div class="slide">
+          <div class="badge">
+            <div class="icon">
+              <svg version="1.1" viewBox="0 0 204 204" class="circle">
+                <path
+                    stroke="#000000" stroke-width="2" stroke-miterlimit="10" fill="rgba(0,0,0,0)"
+                    d="M 102, 102
+            m -100, 0
+            a 100,100 0 1,0 200,0
+            a 100,100 0 1,0 -200,0">
+                </path>
+              </svg>
+              <img src="../assets/icons8-search.png" alt="">
+              <span class="level">2</span>
+            </div>
+          </div>
+          <h4>Passionné</h4>
+          <div class="progress">
+            <div class="bar" style="width: 20%"></div>
+          </div>
+          <div class="legend">
+            Passer 2 commandes supplémentaires
+          </div>
+        </div>
+      </div>
+      <a href="#next" class="arrow next">
+        <svg viewBox="0 0 16 36">
+          <polyline points="5.32 4.844 10.5 17.979 5.441 31.115"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="container action">
+    <button onclick="app.hideModal()" class="btn">Mon compte</button>
   </div>
 </div>
