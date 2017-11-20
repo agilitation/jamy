@@ -2,7 +2,7 @@ var Application = require('./application');
 var æ = require('./async');
 var Template = require('./navigation/template');
 require('../gen/templates');
-
+var Slider = require('./kinematic/slider');
 var app = new Application('#app');
 var k = require('./kinematic');
 var h = require('./kinematic/helpers');
@@ -59,6 +59,7 @@ app.templates.friends.on('onExit', function (view, done) {
 
 app.templates.modal.on('beforeEnter', function (view, done) {
     view.render();
+    window.slider = new Slider(view.el.querySelector('.slider'));
     var content = view.el.querySelector('.content');
     content.style.height = 'auto';
     app.el.style.height = getComputedStyle(content).height;

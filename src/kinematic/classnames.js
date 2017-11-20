@@ -31,6 +31,10 @@ module.exports = {
         RIGHT: 'kinematic-translate-right',
         TOP: 'kinematic-translate-top',
         LEFT: 'kinematic-translate-left',
-        BOTTOM: 'kinematic-translate-bottom'
+        BOTTOM: 'kinematic-translate-bottom',
+        RIGHT_FAR: 'kinematic-translate-right-far',
+        TOP_FAR: 'kinematic-translate-top-far',
+        LEFT_FAR: 'kinematic-translate-left-far',
+        BOTTOM_FAR: 'kinematic-translate-bottom-far'
     }
 };

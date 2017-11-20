@@ -433,6 +433,7 @@ li.active svg.check polyline {
     flex: 1;
     position: relative;
     height: 16rem;
+    overflow: hidden;
 }
 
 .slider .arrow {
@@ -451,6 +452,7 @@ li.active svg.check polyline {
     position:absolute;
     top: 0;
     width: 100%;
+    z-index: -1;
 }
 
 .slider .badge .icon {
